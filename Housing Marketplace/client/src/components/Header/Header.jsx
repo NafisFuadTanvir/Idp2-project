@@ -6,7 +6,7 @@ import useHeaderColor from "../../hooks/useHeaderColor";
 import OutsideClickHandler from "react-outside-click-handler";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import ProfileMenu from "../ProfileMenu/ProfileMenu";
+import ProfileMenu from "../profileMenu/profileMenu.jsx";
 import AddPropertyModal from "../AddPropertyModal/AddPropertyModal";
 import useAuthCheck from "../../hooks/useAuthCheck.jsx";
 
@@ -49,7 +49,9 @@ const Header = () => {
             {/* add property */}
             <div onClick={handleAddPropertyClick}>Add Property</div>
             <AddPropertyModal opened={modalOpened} setOpened={setModalOpened} />
+            
             {/* login button */}
+
             {!isAuthenticated ? (
               <button className="button" onClick={loginWithRedirect}>
                 Login
@@ -57,6 +59,7 @@ const Header = () => {
             ) : (
               <ProfileMenu user={user} logout={logout} />
             )}
+
           </div>
         </OutsideClickHandler>
 

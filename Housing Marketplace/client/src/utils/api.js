@@ -22,6 +22,26 @@ export const getAllProperties = async () => {
     throw error;
   }
 };
+
+
+
+export const createUser = async (email, token) => {
+  try {
+    await api.post(
+      `/user/register`,
+      { email },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  } catch (error) {
+    toast.error("Something went wrong, Please try again");
+    throw error;
+  }
+};
+
 export const getProperty = async (id) => {
   try {
     const response = await api.get(`/residency/${id}`, {
@@ -37,6 +57,9 @@ export const getProperty = async (id) => {
     throw error;
   }
 };
+
+
+
 export const bookVisit = async (date, propertyId, email, token) => {
   try {
     await api.post(
@@ -144,22 +167,6 @@ export const createResidency = async (data, token) => {
     throw error
   }
 }
-export const createUser = async (email, token) => {
-  try {
-    await api.post(
-      `/user/register`,
-      { email },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  } catch (error) {
-    toast.error("Something went wrong, Please try again");
-    throw error;
-  }
-};
 export const toFav = async (id, email, token) => {
   try {
     await api.post(
