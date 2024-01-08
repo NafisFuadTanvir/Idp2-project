@@ -57,7 +57,11 @@ const Header = () => {
                 Login
               </button>
             ) : (
-              <ProfileMenu user={user} logout={logout} />
+              // <ProfileMenu user={user} logout={logout} />
+              <button className="button" onClick={()=>{
+                localStorage.clear();
+                logout()
+            }}>Logout</button>
             )}
 
           </div>
